@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WayManager : MonoSingleton<WayManager>
+public class WayPositionStorage : MonoSingleton<WayPositionStorage>
 {
     private List<Way> _wayList = new List<Way>();
 

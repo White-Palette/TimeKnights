@@ -16,12 +16,12 @@ public class UnitMove : MonoBehaviour
 
     void Start()
     {
-        _way = WayManager.Instance.GetWay(1);
+        _way = WayPositionStorage.Instance.GetWay(1);
         _currentPosition = transform.position;
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         if (_wayPointIndex < _way.GetPathCount())
         {

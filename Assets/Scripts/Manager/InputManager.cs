@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
         _pointerEventData = new PointerEventData(null);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.touchCount > 0)
         {
@@ -63,7 +63,7 @@ public class InputManager : MonoBehaviour
             }
         }
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
         {
             List<RaycastResult> results = new List<RaycastResult>();
@@ -100,6 +100,6 @@ public class InputManager : MonoBehaviour
                 }
             }
         }
-        #endif
+#endif
     }
 }
