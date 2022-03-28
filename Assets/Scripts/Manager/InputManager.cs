@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
         _pointerEventData = new PointerEventData(null);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Input.touchCount > 0)
         {
@@ -85,14 +85,14 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
+                var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                position.z = 0;
 
-                if (Physics.Raycast(ray, out hit))
+                if (Physics2D.Raycast(position, Vector2.zero))
                 {
                     foreach (ClickableObject clickableObject in _clickableObjects)
                     {
-                        if (hit.collider.gameObject == clickableObject.gameObject)
+                        if (Physics2D.Raycast(position, Vector2.zero).collider.gameObject == clickableObject.gameObject)
                         {
                             clickableObject.OnClickObject();
                         }
