@@ -1820,7 +1820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1cc45cbf99794648af2aa3bd12f79b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subSpriteRenderer: {fileID: 0}
+  subSpriteRenderer: {fileID: 1587654200}
 --- !u!1 &802416476
 GameObject:
   m_ObjectHideFlags: 0
