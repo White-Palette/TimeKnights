@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Base : MonoBehaviour
 {
+    string _baseName;
     ClickableObject clickableObject;
 
     void Start()
