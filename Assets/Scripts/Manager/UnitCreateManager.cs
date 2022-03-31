@@ -8,9 +8,9 @@ public class UnitCreateManager : MonoBehaviour
     private GameObject unitObj;
 
     InputManager inputManager;
-    
 
-    public void UnitCrate()
+
+    public void UnitCreate()
     {
         // 유닛 생산에 필요한것
 
@@ -19,7 +19,7 @@ public class UnitCreateManager : MonoBehaviour
         // 유닛 오브젝트를 소환하였을때 소환될 위치 가져오기?
 
         Instantiate(unitObj, transform.position, Quaternion.identity);
-        
+
     }
 
 }
