@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Base : MonoBehaviour
 {
-    string _baseName;
+    int _baseID;
     ClickableObject clickableObject;
 
     void Start()
@@ -14,9 +14,15 @@ public class Base : MonoBehaviour
         clickableObject.OnClick.AddListener(OnClick);
     }
 
+    public void SetBaseID(int baseID)
+    {
+        _baseID = baseID;
+    }
+
     public void OnClick()
     {
         Debug.Log("Base clicked");
         SelectEffector.Instance.Effect(transform.position);
+        UnitCreateManager.Instance.SetSpawnPosition(transform);
     }
 }

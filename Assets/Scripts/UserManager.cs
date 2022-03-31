@@ -8,14 +8,15 @@ public class UserManager : MonoSingleton<UserManager>
     void Start()
     {
         _userInfo = new UserInfo(0);
+        StartCoroutine(CallAddResource());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator CallAddResource()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        while (true)
         {
             _userInfo.AddResource(10);
+            yield return new WaitForSeconds(1.0f);
         }
     }
 

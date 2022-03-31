@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitCreateManager : MonoBehaviour
+public class UnitCreateManager : MonoSingleton<UnitCreateManager>
 {
     [SerializeField]
-    private GameObject unitObj;
+    private GameObject _unitObj;
 
-    InputManager inputManager;
+    private Transform _spawnPosition = null;
 
+    InputManager _inputManager;
 
     public void UnitCreate()
     {
@@ -18,8 +19,12 @@ public class UnitCreateManager : MonoBehaviour
 
         // 유닛 오브젝트를 소환하였을때 소환될 위치 가져오기?
 
-        Instantiate(unitObj, transform.position, Quaternion.identity);
+        GameObject unit = Instantiate(_unitObj, _spawnPosition);
+    }
 
+    public void SetSpawnPosition(Transform spawnPosition)
+    {
+        _spawnPosition = spawnPosition;
     }
 
 }

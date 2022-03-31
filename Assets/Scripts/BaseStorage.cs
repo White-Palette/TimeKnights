@@ -16,6 +16,4 @@ public class BaseStorage : MonoSingleton<BaseStorage>
             _baseList.Add(baseTemp);
         }
     }
-
-
 }

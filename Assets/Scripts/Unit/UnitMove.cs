@@ -16,7 +16,7 @@ public class UnitMove : MonoBehaviour
 
     void Start()
     {
-        _way = WayPositionStorage.Instance.GetWay(1);
+        _way = WayPositionStorage.Instance.GetWay(3);
         _currentPosition = transform.position;
     }
 
