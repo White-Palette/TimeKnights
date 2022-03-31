@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseStorage : MonoBehaviour
+public class BaseStorage : MonoSingleton<BaseStorage>
 {
     private List<Base> _baseList = new List<Base>();
 
