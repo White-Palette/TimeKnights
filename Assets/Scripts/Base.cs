@@ -22,6 +22,7 @@ public class Base : MonoBehaviour
     public void OnClick()
     {
         Debug.Log("Base clicked");
+        Debug.Log(_baseID);
         SelectEffector.Instance.Effect(transform.position);
         UnitCreateManager.Instance.SetSpawnPosition(transform);
     }
