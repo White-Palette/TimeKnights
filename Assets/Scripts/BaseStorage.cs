@@ -8,12 +8,11 @@ public class BaseStorage : MonoSingleton<BaseStorage>
 
     void Start()
     {
-        Transform[] allChildren = GetComponentsInChildren<Transform>();
-        Base baseTemp = null;
-        foreach (var baseObj in allChildren)
+        Base[] allChildren = GetComponentsInChildren<Base>();
+        for (int i = 0; i < allChildren.Length; i++)
         {
-            baseTemp = baseObj.GetComponent<Base>();
-            _baseList.Add(baseTemp);
+            allChildren[i].SetBaseID(i);
+            _baseList.Add(allChildren[i]);
         }
     }
 }
