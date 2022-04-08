@@ -37,14 +37,24 @@ public class SelectEffector : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        EffectOff();
     }
 
     public void Effect(Vector2 position)
     {
+        spriteRenderer.enabled = true;
+        subSpriteRenderer.enabled = true;
         transform.position = position;
         subSpriteRenderer.transform.position = position;
         transform.DOScale(10f, 1f).From(0f);
         spriteRenderer.DOFade(0f, 1f).From(1f);
         subSpriteRenderer.DOFade(1f, 1f).From(0f);
+    }
+
+    public void EffectOff()
+    {
+        Debug.Log("EffectOff");
+        subSpriteRenderer.enabled = false;
+        spriteRenderer.enabled = false;
     }
 }
