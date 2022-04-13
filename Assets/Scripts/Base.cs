@@ -5,7 +5,19 @@ using UnityEngine.Events;
 
 public class Base : MonoBehaviour
 {
-    int _baseID;
+    public enum BaseOwner
+    {
+        None,
+        Player,
+        Enemy
+    }
+
+    // 베이스의 고유 ID
+    private int _baseID;
+
+    [Tooltip("베이스의 소유자")]
+    [SerializeField]
+    BaseOwner _owner = BaseOwner.None;
     ClickableObject clickableObject;
 
     void Start()
@@ -17,6 +29,11 @@ public class Base : MonoBehaviour
     public void SetBaseID(int baseID)
     {
         _baseID = baseID;
+    }
+
+    public BaseOwner GetOwner()
+    {
+        return _owner;
     }
 
     public void OnClick()

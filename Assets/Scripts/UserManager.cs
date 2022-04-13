@@ -7,7 +7,7 @@ public class UserManager : MonoSingleton<UserManager>
     private UserInfo _userInfo = null;
     void Start()
     {
-        _userInfo = new UserInfo(0);
+        _userInfo = new UserInfo(0, BaseStorage.Instance._playerBaseCount);
         StartCoroutine(CallAddResource());
     }
 
