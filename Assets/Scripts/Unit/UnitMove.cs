@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitMove : MonoBehaviour
+public class UnitMove : PoolableBehaviour<UnitMove>
 {
     // 이동 경로
     private Way _way;
@@ -19,7 +19,6 @@ public class UnitMove : MonoBehaviour
         _way = WayPositionStorage.Instance.GetWay(3);
         _currentPosition = transform.position;
     }
-
 
     void FixedUpdate()
     {

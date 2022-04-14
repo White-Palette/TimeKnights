@@ -8,8 +8,16 @@ public class UnitCreateManager : MonoSingleton<UnitCreateManager>
     private GameObject _unitObj;
 
     private Transform _spawnPosition = null;
+    private Pool<UnitMove> _pool;
 
     InputManager _inputManager;
+
+    private void Start()
+    {
+        _pool = new Pool<UnitMove>(_unitObj, gameObject => {
+            gameObject.transform.position = _spawnPosition.position;
+        });
+    }
 
     public void UnitCreate()
     {
@@ -19,7 +27,8 @@ public class UnitCreateManager : MonoSingleton<UnitCreateManager>
 
         // 유닛 오브젝트를 소환하였을때 소환될 위치 가져오기?
 
-        GameObject unit = Instantiate(_unitObj, _spawnPosition);
+        var unit = _pool.Get();
+        unit.Destroy();
     }
 
     public void SetSpawnPosition(Transform spawnPosition)

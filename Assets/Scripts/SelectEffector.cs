@@ -30,7 +30,6 @@ public class SelectEffector : MonoBehaviour
         }
     }
 
-
     [SerializeField] SpriteRenderer subSpriteRenderer;
     private SpriteRenderer spriteRenderer;
 

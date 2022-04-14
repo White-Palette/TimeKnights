@@ -7,14 +7,14 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
-    private ClickableObject[] _clickableObjects;
+    private ClickHandler[] _clickableObjects;
     private GraphicRaycaster[] _graphicRaycaster;
     private PointerEventData _pointerEventData;
 
     private void Start()
     {
         _graphicRaycaster = FindObjectsOfType<GraphicRaycaster>();
-        _clickableObjects = FindObjectsOfType<ClickableObject>();
+        _clickableObjects = FindObjectsOfType<ClickHandler>();
         _pointerEventData = new PointerEventData(null);
     }
 
@@ -35,7 +35,7 @@ public class InputManager : MonoBehaviour
 
                     if (results.Count > 0)
                     {
-                        foreach (ClickableObject clickableObject in _clickableObjects)
+                        foreach (ClickHandler clickableObject in _clickableObjects)
                         {
                             if (results[0].gameObject == clickableObject.gameObject)
                             {
@@ -50,7 +50,7 @@ public class InputManager : MonoBehaviour
 
                         if (Physics.Raycast(ray, out hit))
                         {
-                            foreach (ClickableObject clickableObject in _clickableObjects)
+                            foreach (ClickHandler clickableObject in _clickableObjects)
                             {
                                 if (hit.collider.gameObject == clickableObject.gameObject)
                                 {
@@ -75,7 +75,7 @@ public class InputManager : MonoBehaviour
 
             if (results.Count > 0)
             {
-                foreach (ClickableObject clickableObject in _clickableObjects)
+                foreach (ClickHandler clickableObject in _clickableObjects)
                 {
                     if (results[0].gameObject == clickableObject.gameObject)
                     {
@@ -90,7 +90,7 @@ public class InputManager : MonoBehaviour
 
                 if (Physics2D.Raycast(position, Vector2.zero))
                 {
-                    foreach (ClickableObject clickableObject in _clickableObjects)
+                    foreach (ClickHandler clickableObject in _clickableObjects)
                     {
                         if (Physics2D.Raycast(position, Vector2.zero).collider.gameObject == clickableObject.gameObject)
                         {

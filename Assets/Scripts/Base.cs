@@ -1,29 +1,59 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(ClickHandler))]
+[RequireComponent(typeof(DragHandler))]
 public class Base : MonoBehaviour
 {
-    int _baseID;
-    ClickableObject clickableObject;
+    public int BaseID { get => _baseID; set => _baseID = value; }
+    public bool IsSelected { get => _isSelected; set => _isSelected = value; }
+
+    private int _baseID;
+    private bool _isSelected = false;
+
+    ClickHandler clickHandler;
+    DragHandler dragHandler;
 
     void Start()
     {
-        clickableObject = GetComponent<ClickableObject>();
-        clickableObject.OnClick.AddListener(OnClick);
+        clickHandler = GetComponent<ClickHandler>();
+        clickHandler.OnClick.AddListener(OnClick);
+
+        dragHandler = GetComponent<DragHandler>();
+        dragHandler.OnDragStart.AddListener(OnDragStart);
+        dragHandler.OnDrag.AddListener(OnDrag);
+        dragHandler.OnDragEnd.AddListener(OnDragEnd);
     }
 
-    public void SetBaseID(int baseID)
+    private void OnClick()
     {
-        _baseID = baseID;
+        if (IsSelected)
+        {
+            IsSelected = false;
+            dragHandler.IsDraggable = false;
+        }
+        else
+        {
+            IsSelected = true;
+            dragHandler.IsDraggable = true;
+        }
     }
 
-    public void OnClick()
+    private void OnDragStart(Vector2 position)
     {
-        Debug.Log("Base clicked");
-        Debug.Log(_baseID);
-        SelectEffector.Instance.Effect(transform.position);
-        UnitCreateManager.Instance.SetSpawnPosition(transform);
+        Debug.Log("OnDragStart");
+    }
+
+    private void OnDrag(Vector2 position)
+    {
+        Debug.Log("OnDrag");
+    }
+
+    private void OnDragEnd(Vector2 position)
+    {
+        Debug.Log("OnDragEnd");
     }
 }

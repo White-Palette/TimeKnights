@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ClickableObject : MonoBehaviour
+public class ClickHandler : MonoBehaviour
 {
     public UnityEvent OnClick;
+    public bool IsClickable = true;
     
     private void Start()
     {
@@ -15,6 +16,9 @@ public class ClickableObject : MonoBehaviour
 
     public void OnClickObject()
     {
-        OnClick.Invoke();
+        if (IsClickable)
+        {
+            OnClick.Invoke();
+        }
     }
 }
