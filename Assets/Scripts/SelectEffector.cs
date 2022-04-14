@@ -52,7 +52,6 @@ public class SelectEffector : MonoBehaviour
 
     public void EffectOff()
     {
-        Debug.Log("EffectOff");
         subSpriteRenderer.enabled = false;
         spriteRenderer.enabled = false;
     }
