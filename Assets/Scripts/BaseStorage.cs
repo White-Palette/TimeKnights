@@ -10,12 +10,7 @@ public class BaseStorage : MonoSingleton<BaseStorage>
 
     void Start()
     {
-        Base[] allChildren = GetComponentsInChildren<Base>();
-        for (int i = 0; i < allChildren.Length; i++)
-        {
-            allChildren[i].SetBaseID(i);
-            _baseList.Add(allChildren[i]);
-        }
+        
     }
 
     public void SetBaseCount()
@@ -24,11 +19,11 @@ public class BaseStorage : MonoSingleton<BaseStorage>
         _enemyBaseCount = 0;
         for (int i = 0; i < _baseList.Count; i++)
         {
-            if (_baseList[i].GetOwner() == Base.BaseOwner.Player)
+            if (_baseList[i].Owner == BaseOwner.Player)
             {
                 _playerBaseCount++;
             }
-            else if (_baseList[i].GetOwner() == Base.BaseOwner.Enemy)
+            else if (_baseList[i].Owner == BaseOwner.Enemy)
             {
                 _enemyBaseCount++;
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(ClickHandler))]
 public class DragHandler : MonoBehaviour
 {
     public UnityEvent<Vector2> OnDragStart;
@@ -13,11 +14,25 @@ public class DragHandler : MonoBehaviour
     public bool IsDragging = false;
 
     private ClickHandler clickHandler;
+    private bool isInCanvas;
 
     void Start()
     {
         clickHandler = GetComponent<ClickHandler>();
         clickHandler.OnClick.AddListener(OnClick);
+
+        if (GetComponent<RectTransform>() == null && GetComponent<Collider2D>() == null)
+        {
+            Debug.LogError("ClickableObject: " + gameObject.name + " has no RectTransform or Collider component.");
+        }
+        else if (GetComponent<RectTransform>() != null)
+        {
+            isInCanvas = true;
+        }
+        else if (GetComponent<Collider2D>() != null)
+        {
+            isInCanvas = false;
+        }
     }
 
     public void OnClick()
@@ -33,11 +48,17 @@ public class DragHandler : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && IsDragging)
         {
-            OnDrag.Invoke(Input.mousePosition);
+            if (isInCanvas)
+                OnDrag.Invoke(Input.mousePosition);
+            else
+                OnDrag.Invoke(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
         else if (Input.GetMouseButtonUp(0) && IsDragging)
         {
-            OnDragEnd.Invoke(Input.mousePosition);
+            if (isInCanvas)
+                OnDragEnd.Invoke(Input.mousePosition);
+            else
+                OnDragEnd.Invoke(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             IsDragging = false;
         }
     }
