@@ -17,6 +17,7 @@ public class BaseStorage : MonoSingleton<BaseStorage>
     {
         _playerBaseCount = 0;
         _enemyBaseCount = 0;
+        
         for (int i = 0; i < _baseList.Count; i++)
         {
             if (_baseList[i].Owner == BaseOwner.Player)

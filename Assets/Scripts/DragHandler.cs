@@ -40,7 +40,10 @@ public class DragHandler : MonoBehaviour
         if (IsDraggable)
         {
             IsDragging = true;
-            OnDragStart.Invoke(Input.mousePosition);
+            if (isInCanvas)
+                OnDragStart.Invoke(Input.mousePosition);
+            else
+                OnDragStart.Invoke(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
     }
     
