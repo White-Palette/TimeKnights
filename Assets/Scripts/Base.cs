@@ -63,7 +63,7 @@ public class Base : MonoBehaviour
         // Color color = _baseColor;
         // color += new Color(0.5f, 0.5f, 0.5f, 0);
         // _spriteRenderer.color = color;
-        SelectEffector.Instance.Effect(this.transform.position);
+        // SelectEffector.Instance.Effect(this.transform.position);
         if (Owner == BaseOwner.Player) dragHandler.IsDraggable = true;
     }
 

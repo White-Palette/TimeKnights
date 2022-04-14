@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class ClickHandler : MonoBehaviour
 {
-    public UnityEvent OnClick;
+    public UnityEvent OnClick = new UnityEvent();
     public bool IsClickable = true;
     
     private void Start()
