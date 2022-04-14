@@ -17,6 +17,17 @@ public class Base : MonoBehaviour
     ClickHandler clickHandler;
     DragHandler dragHandler;
 
+    public enum BaseOwner
+    {
+        None,
+        Player,
+        Enemy
+    }
+
+    [Tooltip("베이스의 소유자")]
+    [SerializeField]
+    BaseOwner _owner = BaseOwner.None;
+
     void Start()
     {
         clickHandler = GetComponent<ClickHandler>();
