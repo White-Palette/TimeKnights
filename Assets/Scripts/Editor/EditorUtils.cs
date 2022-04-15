@@ -13,9 +13,19 @@ public class EditorUtils
 {
     static EditorUtils()
     {
-        EditorSceneManager.sceneDirtied += (scene) =>
+        // EditorSceneManager.sceneDirtied += (scene) =>
+        // {
+        //     EditorSceneManager.SaveScene(scene);
+        // };
+        EditorApplication.playModeStateChanged += (state) =>
         {
-            EditorSceneManager.SaveScene(scene);
+            if (state == PlayModeStateChange.ExitingEditMode)
+            {
+                if (EditorSceneManager.GetActiveScene().isDirty)
+                {
+                    EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
+                }
+            }
         };
     }
 
