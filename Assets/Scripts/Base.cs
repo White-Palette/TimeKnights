@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,18 +18,47 @@ public class Base : MonoBehaviour
     [SerializeField] List<Base> _connectedBases;
     [SerializeField] List<Base> _roads;
 
-    public int BaseID => _baseID;
+    public int BaseID = 0;
     public bool IsSelected => _isSelected;
     public BaseOwner Owner => _owner;
     public List<Base> ConnectedBases => _connectedBases;
 
     private List<LineRenderer> lineRenderers = new List<LineRenderer>();
     private List<Base> _tempRoads = new List<Base>();
+
+    public void SummonUnit(int unitID)
+    {
+        UnitCreateManager.Instance.UnitCreate(unitID, transform.position, _roads.Select(road => road.transform.position).ToList());
+    }
+
+    public void SetSelected(bool value)
+    {
+        _isSelected = value;
+        if (Owner == BaseOwner.Player) dragHandler.IsDraggable = value;
+
+        if (value)
+        {
+            Color color = _baseColor;
+            color -= new Color(0.5f, 0.5f, 0.5f, 0);
+            _spriteRenderer.color = color;
+            SelectEffector.Instance.Effect(this.transform.position);
+            if (Owner == BaseOwner.Player)
+            {
+                dragHandler.IsDraggable = true;
+                lineRenderers.ForEach(line => line.gameObject.SetActive(true));
+            }
+        }
+        else
+        {
+            _spriteRenderer.color = _baseColor;
+            lineRenderers.ForEach(line => line.gameObject.SetActive(false));
+        }
+    }
+
     private ClickHandler clickHandler;
     private DragHandler dragHandler;
     private SpriteRenderer _spriteRenderer;
-    private Color _baseColor;
-    private int _baseID;
+    private Color _baseColor = Color.white;
     private bool _isSelected = false;
 
     void Start()
@@ -43,7 +73,7 @@ public class Base : MonoBehaviour
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
-        _baseColor = BaseStorage.Instance.BaseDefaultColor;
+        _baseColor = BaseManager.Instance.BaseDefaultColor;
 
         if (Owner == BaseOwner.Player)
         {
@@ -58,13 +88,7 @@ public class Base : MonoBehaviour
 
     private void OnClick()
     {
-        _isSelected = true;
-
-        // Color color = _baseColor;
-        // color += new Color(0.5f, 0.5f, 0.5f, 0);
-        // _spriteRenderer.color = color;
-        // SelectEffector.Instance.Effect(this.transform.position);
-        if (Owner == BaseOwner.Player) dragHandler.IsDraggable = true;
+        BaseManager.Instance.SelectBase(BaseID);
     }
 
     private void OnDragStart(Vector2 position)
@@ -116,6 +140,15 @@ public class Base : MonoBehaviour
         lineRenderers[_tempRoads.Count - 1].SetPosition(1, position);
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        foreach (var connectedBase in _connectedBases)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, connectedBase.transform.position);
+        }
+    }
+
     private void OnDragEnd(Vector2 position)
     {
         Debug.Log("OnDragEnd");
@@ -123,7 +156,8 @@ public class Base : MonoBehaviour
         lineRenderers.RemoveAt(lineRenderers.Count - 1);
         foreach (var line in lineRenderers)
         {
-            line.material.DOColor(new Color(1, 1, 1, 0.2f), 0.5f);
+            line.material.DOColor(new Color(1, 1, 1, 0.5f), 0.5f);
         }
+        _roads = _tempRoads;
     }
 }

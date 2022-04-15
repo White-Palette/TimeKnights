@@ -1,40 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitMove : PoolableBehaviour<UnitMove>
 {
-    // 이동 경로
-    private Way _way;
-    // 현재 위치
-    private Vector3 _currentPosition = Vector3.zero;
-    // 이동포인트 인덱스
-    private int _wayPointIndex = 0;
-    // 이동 속도
-    [SerializeField]
-    private float _speed = 3f;
+    [SerializeField] float _speed = 3f;
+    private List<Vector3> _path = new List<Vector3>();
 
-    void Start()
+    private void Start()
     {
-        _way = WayPositionStorage.Instance.GetWay(3);
-        _currentPosition = transform.position;
+        OnUnpool += OnUnpooled;
     }
 
-    void FixedUpdate()
+    private void OnUnpooled(UnitMove obj)
     {
-        if (_wayPointIndex < _way.GetPathCount())
-        {
-            // 이동
-            Vector3 direction = _way._path[_wayPointIndex] - _currentPosition;
-            direction.Normalize();
-            _currentPosition += direction * _speed * Time.deltaTime;
-            transform.position = _currentPosition;
+        _path.Clear();
+    }
 
-            // 이동 거리가 다다르면 다음 이동 경로로 이동
-            if (Vector3.Distance(_currentPosition, _way._path[_wayPointIndex]) < 0.1f)
-            {
-                _wayPointIndex++;
-            }
+    public void SetPath(List<Vector3> path)
+    {
+        _path = path;
+    }
+
+    private void FixedUpdate()
+    {
+        if (_path.Count == 0)
+            return;
+        transform.position = Vector3.MoveTowards(transform.position, _path[0], _speed * Time.fixedDeltaTime);
+        if (Vector2.Distance(transform.position, _path[0]) < _speed * Time.fixedDeltaTime)
+        {
+            transform.position = _path[0];
+            _path.RemoveAt(0);
         }
     }
 }

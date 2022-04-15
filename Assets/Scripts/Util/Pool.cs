@@ -10,7 +10,7 @@ public class Pool<T> where T : PoolableBehaviour<T>
     private readonly GameObject _prefab;
     private readonly Transform _parent;
 
-    public Pool(GameObject prefab, Action<GameObject> onPool, int preGenerate = 0, Transform parent = null)
+    public Pool(GameObject prefab, Action<T> onPool, int preGenerate = 0, Transform parent = null)
     {
         if (parent == null)
             parent = new GameObject(typeof(T).ToString()).transform;
@@ -26,6 +26,10 @@ public class Pool<T> where T : PoolableBehaviour<T>
             poolable.OnPool += onPool;
             _pool.Push(poolable);
         }
+    }
+
+    public Pool(GameObject prefab, Transform parent = null) : this(prefab, null, 0, null)
+    {
     }
 
     public T Get()
@@ -46,7 +50,22 @@ public class Pool<T> where T : PoolableBehaviour<T>
             item.Pool = this;
         }
         _pooledObjects.Add(item.gameObject);
-        item.OnPool.Invoke(item.gameObject);
+        item.OnPool?.Invoke(item);
+        return item;
+    }
+
+    public T Get(Action<T> onPool)
+    {
+        T item = Get();
+        onPool.Invoke(item);
+        return item;
+    }
+
+    public T Get(Vector3 position, Action<T> onPool)
+    {
+        T item = Get();
+        item.transform.position = position;
+        onPool.Invoke(item);
         return item;
     }
 
@@ -55,7 +74,7 @@ public class Pool<T> where T : PoolableBehaviour<T>
         if (!_pooledObjects.Contains(obj.gameObject))
             throw new Exception("Object is not in this pool");
 
-        obj.OnUnpool.Invoke(obj.gameObject);
+        obj.OnUnpool?.Invoke(obj);
         obj.gameObject.SetActive(false);
         _pooledObjects.Remove(obj.gameObject);
         _pool.Push(obj);
