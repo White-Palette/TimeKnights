@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour
     private DragHandler dragHandler;
     private RectTransform rectTransform = null;
 
+    [SerializeField]
     private GameObject virtualImage = null;
 
     void Start()
@@ -27,20 +28,22 @@ public class Tower : MonoBehaviour
         Debug.Log("OnClick");
         if (virtualImage == null)
         {
-            virtualImage = Instantiate(this.gameObject, rectTransform);
-            virtualImage.transform.SetParent(transform.parent.parent, true);
+            virtualImage = Instantiate(virtualImage);
+            virtualImage.transform.SetParent(null);
+            virtualImage.transform.localPosition = Vector3.zero;
         }
     }
 
     private void OnDragStart(Vector2 position)
     {
         Debug.Log("OnDragStart");
-        virtualImage.transform.localPosition = position;
+        // follow cursur
+        virtualImage.transform.position = position;
     }
 
     private void OnDrag(Vector2 position)
     {
         Debug.Log("OnDrag");
-        virtualImage.transform.localPosition = position;
+        virtualImage.transform.position = position;
     }
 }
