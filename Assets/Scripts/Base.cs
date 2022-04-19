@@ -89,6 +89,19 @@ public class Base : MonoBehaviour
     private void OnClick()
     {
         BaseManager.Instance.SelectBase(BaseID);
+
+        if(Owner == BaseOwner.None)
+        {
+            Debug.Log("현재 상태 : 미점령");
+        }
+        else if(Owner == BaseOwner.Player)
+        {
+            Debug.Log("현재 상태 : 아군의 점령지");
+        }
+        else if (Owner == BaseOwner.Enemy)
+        {
+            Debug.Log("현재 상태 : 적군의 점령지");
+        }
     }
 
     private void OnDragStart(Vector2 position)
