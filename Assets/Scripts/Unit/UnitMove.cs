@@ -27,11 +27,21 @@ public class UnitMove : PoolableBehaviour<UnitMove>
     {
         if (_path.Count == 0)
             return;
+
         transform.position = Vector3.MoveTowards(transform.position, _path[0], _speed * Time.fixedDeltaTime);
         if (Vector2.Distance(transform.position, _path[0]) < _speed * Time.fixedDeltaTime)
         {
             transform.position = _path[0];
             _path.RemoveAt(0);
+        }
+        
+        foreach (var baseItem in BaseManager.Instance.BaseList)
+        {
+            float distance = Vector2.Distance(baseItem.transform.position, transform.position);
+            if (distance <= 0.1f && baseItem.Owner != BaseOwner.Player)
+            {
+                baseItem.Owner = BaseOwner.Player;
+            }
         }
     }
 }

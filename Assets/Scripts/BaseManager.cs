@@ -8,6 +8,7 @@ public class BaseManager : MonoSingleton<BaseManager>
     public uint PlayerBaseCount { get; private set; } = 0;
     public uint EnemyBaseCount { get; private set; } = 0;
     public int SelectedBase => _selectedBase;
+    public List<Base> BaseList => _baseList;
 
     private List<Base> _baseList = new List<Base>();
     public Color BaseDefaultColor => _baseDefaultColor;

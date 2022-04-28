@@ -20,7 +20,26 @@ public class Base : MonoBehaviour
 
     public int BaseID = 0;
     public bool IsSelected => _isSelected;
-    public BaseOwner Owner => _owner;
+    public BaseOwner Owner
+    {
+        get => _owner;
+        set
+        {
+            _owner = value;
+
+            _baseColor = BaseManager.Instance.BaseDefaultColor;
+
+            if (_owner == BaseOwner.Player)
+            {
+                _baseColor = Color.blue;
+            }
+            else if (_owner == BaseOwner.Enemy)
+            {
+                _baseColor = Color.red;
+            }
+            _spriteRenderer.color = _baseColor;
+        }
+    }
     public List<Base> ConnectedBases => _connectedBases;
 
     private List<LineRenderer> lineRenderers = new List<LineRenderer>();
@@ -88,14 +107,13 @@ public class Base : MonoBehaviour
 
     private void OnClick()
     {
-        BaseManager.Instance.SelectBase(BaseID);
-
         if(Owner == BaseOwner.None)
         {
             Debug.Log("현재 상태 : 미점령");
         }
         else if(Owner == BaseOwner.Player)
         {
+            BaseManager.Instance.SelectBase(BaseID);
             Debug.Log("현재 상태 : 아군의 점령지");
         }
         else if (Owner == BaseOwner.Enemy)
