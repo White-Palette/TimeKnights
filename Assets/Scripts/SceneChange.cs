@@ -13,11 +13,18 @@ public class SceneChange : MonoBehaviour
     private GameObject ExileScroll;
     [SerializeField]
     private GameObject SpiritScroll;
+    [SerializeField]
+    private GameObject shop;
     private void Awake()
     {
-        teamEditor.SetActive(false);        
+        teamEditor.SetActive(false);
+        shop.SetActive(false);
     }
 
+    public void OnClickShop()
+    {
+        shop.SetActive(true);
+    }
     public void OnClickEditor()
     {
         teamEditor.SetActive(true);
@@ -25,6 +32,7 @@ public class SceneChange : MonoBehaviour
     public void OnClickClose()
     {
         teamEditor.SetActive(false);
+        shop.SetActive(false);
     }
     public void OnClickBattle()
     {
