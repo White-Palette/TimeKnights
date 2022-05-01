@@ -15,6 +15,8 @@ public class SceneChange : MonoBehaviour
     private GameObject SpiritScroll;
     [SerializeField]
     private GameObject shop;
+
+
     private void Awake()
     {
         teamEditor.SetActive(false);
@@ -58,5 +60,9 @@ public class SceneChange : MonoBehaviour
     {
         DisableAllScroll();
         SpiritScroll.SetActive(true);
+    }
+    public void StageStart(int sceneNumber)
+    {
+        SceneManager.LoadScene(sceneNumber);
     }
 }
