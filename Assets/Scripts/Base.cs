@@ -105,13 +105,14 @@ public class Base : MonoBehaviour
         _spriteRenderer.color = _baseColor;
     }
 
+    // TODO : 우측 하단에 이 정보도 표시되게 변경하기
     private void OnClick()
     {
-        if(Owner == BaseOwner.None)
+        if (Owner == BaseOwner.None)
         {
             Debug.Log("현재 상태 : 미점령");
         }
-        else if(Owner == BaseOwner.Player)
+        else if (Owner == BaseOwner.Player)
         {
             BaseManager.Instance.SelectBase(BaseID);
             Debug.Log("현재 상태 : 아군의 점령지");
@@ -137,6 +138,7 @@ public class Base : MonoBehaviour
         lineRenderers.Add(CreateLineRenderer(transform.position, transform.position));
     }
 
+    // TODO : 타워에 유닛이 있을때만 라인 랜더러 생성
     private LineRenderer CreateLineRenderer(Vector2 position1, Vector2 position2)
     {
         var lineRenderer = new GameObject("LineRenderer").AddComponent<LineRenderer>();
