@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoSingleton<UIManager>
 {
     [Header("UI")]
 
@@ -11,8 +11,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text _resourceText = null;
 
-    void Update()
-    {
-        _resourceText.text = "Resource : " + UserManager.Instance.GetUserResource();
+    public int Resource 
+    { 
+        set 
+        {
+            _resourceText.text = $"{value.ToString("#,##0")} 원";
+        }
     }
 }
