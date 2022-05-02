@@ -21,6 +21,7 @@ public class BaseManager : MonoSingleton<BaseManager>
     {
         _baseList.AddRange(FindObjectsOfType<Base>());
         _baseList.ForEach(baseObj => baseObj.BaseID = _baseList.IndexOf(baseObj));
+        _baseList.ForEach(baseObj => baseObj.SetSelected(false));
     }
 
     public void SelectBase(int baseID)

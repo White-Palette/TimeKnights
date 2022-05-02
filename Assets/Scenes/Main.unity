@@ -604,6 +604,9 @@ GameObject:
   - component: {fileID: 178884086}
   - component: {fileID: 178884088}
   - component: {fileID: 178884087}
+  - component: {fileID: 178884091}
+  - component: {fileID: 178884090}
+  - component: {fileID: 178884089}
   m_Layer: 5
   m_Name: Tower0
   m_TagString: Untagged
@@ -669,6 +672,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178884085}
   m_CullTransparentMesh: 1
+--- !u!114 &178884089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178884085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804087e20d6f28547b8c42f8116b80e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDragStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDragEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  IsDraggable: 1
+  IsDragging: 0
+--- !u!114 &178884090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178884085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8542a3cc48e5c043959ef0caf5ac946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  IsClickable: 1
+--- !u!114 &178884091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178884085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f5ce34616e6164b9668a6040c1a610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualImage: {fileID: 5196352729186598554, guid: db7c8471c220c944fa9f2302736e2b35, type: 3}
 --- !u!1 &199205634
 GameObject:
   m_ObjectHideFlags: 0
@@ -3632,6 +3687,9 @@ GameObject:
   - component: {fileID: 1349629764}
   - component: {fileID: 1349629766}
   - component: {fileID: 1349629765}
+  - component: {fileID: 1349629769}
+  - component: {fileID: 1349629768}
+  - component: {fileID: 1349629767}
   m_Layer: 5
   m_Name: Tower2
   m_TagString: Untagged
@@ -3697,6 +3755,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349629763}
   m_CullTransparentMesh: 1
+--- !u!114 &1349629767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349629763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804087e20d6f28547b8c42f8116b80e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDragStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDragEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  IsDraggable: 1
+  IsDragging: 0
+--- !u!114 &1349629768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349629763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8542a3cc48e5c043959ef0caf5ac946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  IsClickable: 1
+--- !u!114 &1349629769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349629763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f5ce34616e6164b9668a6040c1a610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualImage: {fileID: 5196352729186598554, guid: db7c8471c220c944fa9f2302736e2b35, type: 3}
 --- !u!1 &1460026782
 GameObject:
   m_ObjectHideFlags: 0
@@ -4047,6 +4157,9 @@ GameObject:
   - component: {fileID: 1569401678}
   - component: {fileID: 1569401680}
   - component: {fileID: 1569401679}
+  - component: {fileID: 1569401683}
+  - component: {fileID: 1569401682}
+  - component: {fileID: 1569401681}
   m_Layer: 5
   m_Name: Tower3
   m_TagString: Untagged
@@ -4112,6 +4225,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1569401677}
   m_CullTransparentMesh: 1
+--- !u!114 &1569401681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569401677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804087e20d6f28547b8c42f8116b80e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDragStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDragEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  IsDraggable: 1
+  IsDragging: 0
+--- !u!114 &1569401682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569401677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8542a3cc48e5c043959ef0caf5ac946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  IsClickable: 1
+--- !u!114 &1569401683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569401677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f5ce34616e6164b9668a6040c1a610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualImage: {fileID: 5196352729186598554, guid: db7c8471c220c944fa9f2302736e2b35, type: 3}
 --- !u!1 &1587654198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4747,7 +4912,6 @@ GameObject:
   - component: {fileID: 1712057969}
   - component: {fileID: 1712057968}
   - component: {fileID: 1712057971}
-  - component: {fileID: 1712057970}
   - component: {fileID: 1712057972}
   - component: {fileID: 1712057973}
   - component: {fileID: 1712057974}
@@ -4784,18 +4948,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1712057970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712057967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79b66378fe427d14090c0e9a1a430490, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1712057971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5210,6 +5362,9 @@ GameObject:
   - component: {fileID: 1955463567}
   - component: {fileID: 1955463569}
   - component: {fileID: 1955463568}
+  - component: {fileID: 1955463572}
+  - component: {fileID: 1955463571}
+  - component: {fileID: 1955463570}
   m_Layer: 5
   m_Name: Tower1
   m_TagString: Untagged
@@ -5275,6 +5430,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955463566}
   m_CullTransparentMesh: 1
+--- !u!114 &1955463570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955463566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804087e20d6f28547b8c42f8116b80e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDragStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDragEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  IsDraggable: 1
+  IsDragging: 0
+--- !u!114 &1955463571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955463566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8542a3cc48e5c043959ef0caf5ac946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  IsClickable: 1
+--- !u!114 &1955463572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955463566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f5ce34616e6164b9668a6040c1a610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualImage: {fileID: 5196352729186598554, guid: db7c8471c220c944fa9f2302736e2b35, type: 3}
 --- !u!1 &2038828491
 GameObject:
   m_ObjectHideFlags: 0

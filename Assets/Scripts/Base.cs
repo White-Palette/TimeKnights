@@ -53,7 +53,8 @@ public class Base : MonoBehaviour
     public void SetSelected(bool value)
     {
         _isSelected = value;
-        if (Owner == BaseOwner.Player) dragHandler.IsDraggable = value;
+        _dragHandler.IsDraggable = value;
+        if (Owner == BaseOwner.Player) _dragHandler.IsDraggable = value;
 
         if (value)
         {
@@ -63,7 +64,7 @@ public class Base : MonoBehaviour
             SelectEffector.Instance.Effect(this.transform.position);
             if (Owner == BaseOwner.Player)
             {
-                dragHandler.IsDraggable = true;
+                _dragHandler.IsDraggable = true;
                 lineRenderers.ForEach(line => line.gameObject.SetActive(true));
             }
         }
@@ -75,7 +76,7 @@ public class Base : MonoBehaviour
     }
 
     private ClickHandler clickHandler;
-    private DragHandler dragHandler;
+    private DragHandler _dragHandler;
     private SpriteRenderer _spriteRenderer;
     private Color _baseColor = Color.white;
     private bool _isSelected = false;
@@ -85,10 +86,10 @@ public class Base : MonoBehaviour
         clickHandler = GetComponent<ClickHandler>();
         clickHandler.OnClick.AddListener(OnClick);
 
-        dragHandler = GetComponent<DragHandler>();
-        dragHandler.OnDragStart.AddListener(OnDragStart);
-        dragHandler.OnDrag.AddListener(OnDrag);
-        dragHandler.OnDragEnd.AddListener(OnDragEnd);
+        _dragHandler = GetComponent<DragHandler>();
+        _dragHandler.OnDragStart.AddListener(OnDragStart);
+        _dragHandler.OnDrag.AddListener(OnDrag);
+        _dragHandler.OnDragEnd.AddListener(OnDragEnd);
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
