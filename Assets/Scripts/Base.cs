@@ -81,9 +81,9 @@ public class Base : MonoBehaviour
     private int enemyBaseCount = 0;
     public void GameWin()
     {
-        foreach (var i in BaseManager.Instance.BaseList)
+        foreach (var EnemyBaseItem in BaseManager.Instance.BaseList)
         {
-            if (i.Owner == BaseOwner.Enemy)
+            if (EnemyBaseItem.Owner == BaseOwner.Enemy)
             {
                 enemyBaseCount++;
             }
