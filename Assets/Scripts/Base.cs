@@ -38,7 +38,10 @@ public class Base : MonoBehaviour
                 _baseColor = Color.red;
             }
             _spriteRenderer.color = _baseColor;
+
+            GameWin();
         }
+
     }
     public List<Base> ConnectedBases => _connectedBases;
 
@@ -71,6 +74,23 @@ public class Base : MonoBehaviour
             _dragHandler.IsDraggable = false;
             _spriteRenderer.color = _baseColor;
             lineRenderers.ForEach(line => line.gameObject.SetActive(false));
+        }
+    }
+
+    private int enemyBaseCount = 0;
+    public void GameWin()
+    {
+        foreach (var EnemyBaseItem in BaseManager.Instance.BaseList)
+        {
+            if (EnemyBaseItem.Owner == BaseOwner.Enemy)
+            {
+                enemyBaseCount++;
+            }
+        }
+
+        if (enemyBaseCount == 0)
+        {
+            Debug.Log("게임 승리");
         }
     }
 
