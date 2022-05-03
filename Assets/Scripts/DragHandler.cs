@@ -37,6 +37,13 @@ public class DragHandler : MonoBehaviour
 
     public void OnClick()
     {
+        StartCoroutine(StartDrag());
+    }
+    
+    IEnumerator StartDrag()
+    {
+        yield return null;
+
         if (IsDraggable)
         {
             IsDragging = true;

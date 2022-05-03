@@ -53,8 +53,6 @@ public class Base : MonoBehaviour
     public void SetSelected(bool value)
     {
         _isSelected = value;
-        _dragHandler.IsDraggable = value;
-        if (Owner == BaseOwner.Player) _dragHandler.IsDraggable = value;
 
         if (value)
         {
@@ -70,6 +68,7 @@ public class Base : MonoBehaviour
         }
         else
         {
+            _dragHandler.IsDraggable = false;
             _spriteRenderer.color = _baseColor;
             lineRenderers.ForEach(line => line.gameObject.SetActive(false));
         }

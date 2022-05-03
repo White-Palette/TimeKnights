@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     private GraphicRaycaster[] _graphicRaycaster;
     private PointerEventData _pointerEventData;
 
+    private ClickHandler _inputTarget;
+
     private void Start()
     {
         _graphicRaycaster = FindObjectsOfType<GraphicRaycaster>();
@@ -24,7 +26,7 @@ public class InputManager : MonoBehaviour
         {
             for (int i = 0; i < Input.touchCount; i++)
             {
-                if (Input.GetTouch(i).phase == TouchPhase.Began)
+                if (Input.GetTouch(i).phase == TouchPhase.Began || Input.GetTouch(i).phase == TouchPhase.Ended)
                 {
                     List<RaycastResult> results = new List<RaycastResult>();
                     _pointerEventData.position = Input.GetTouch(i).position;
@@ -39,7 +41,11 @@ public class InputManager : MonoBehaviour
                         {
                             if (results[0].gameObject == clickableObject.gameObject)
                             {
-                                clickableObject.OnClickObject();
+                                if (Input.GetTouch(i).phase == TouchPhase.Began)
+                                {
+                                    clickableObject.OnClickObject();
+                                }
+                                _inputTarget = clickableObject;
                             }
                         }
                     }
@@ -54,6 +60,7 @@ public class InputManager : MonoBehaviour
                             {
                                 if (hit.collider.gameObject == clickableObject.gameObject)
                                 {
+                                    _inputTarget = clickableObject;
                                     clickableObject.OnClickObject();
                                 }
                             }
@@ -79,6 +86,7 @@ public class InputManager : MonoBehaviour
                 {
                     if (results[0].gameObject == clickableObject.gameObject)
                     {
+                        _inputTarget = clickableObject;
                         clickableObject.OnClickObject();
                     }
                 }
@@ -94,6 +102,7 @@ public class InputManager : MonoBehaviour
                     {
                         if (Physics2D.Raycast(position, Vector2.zero).collider.gameObject == clickableObject.gameObject)
                         {
+                            _inputTarget = clickableObject;
                             clickableObject.OnClickObject();
                         }
                     }

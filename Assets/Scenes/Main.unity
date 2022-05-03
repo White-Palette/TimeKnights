@@ -478,7 +478,7 @@ MonoBehaviour:
   - {fileID: 771258723}
   - {fileID: 600515867}
   _roads: []
-  BaseID: 0
+  BaseID: 4
 --- !u!58 &113695691
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
   OnDragEnd:
     m_PersistentCalls:
       m_Calls: []
-  IsDraggable: 1
+  IsDraggable: 0
   IsDragging: 0
 --- !u!1 &133141352
 GameObject:
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   OnDragEnd:
     m_PersistentCalls:
       m_Calls: []
-  IsDraggable: 1
+  IsDraggable: 0
   IsDragging: 0
 --- !u!114 &553799778
 MonoBehaviour:
@@ -1505,7 +1505,7 @@ MonoBehaviour:
   - {fileID: 928511405}
   - {fileID: 600515867}
   _roads: []
-  BaseID: 0
+  BaseID: 1
 --- !u!114 &553799779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1712,7 +1712,7 @@ MonoBehaviour:
   OnDragEnd:
     m_PersistentCalls:
       m_Calls: []
-  IsDraggable: 1
+  IsDraggable: 0
   IsDragging: 0
 --- !u!114 &600515867
 MonoBehaviour:
@@ -1732,7 +1732,7 @@ MonoBehaviour:
   - {fileID: 553799778}
   - {fileID: 113695690}
   _roads: []
-  BaseID: 0
+  BaseID: 7
 --- !u!1 &605663790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,7 +2142,7 @@ MonoBehaviour:
   - {fileID: 113695690}
   - {fileID: 600515867}
   _roads: []
-  BaseID: 0
+  BaseID: 6
 --- !u!58 &771258724
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2180,7 +2180,7 @@ MonoBehaviour:
   OnDragEnd:
     m_PersistentCalls:
       m_Calls: []
-  IsDraggable: 1
+  IsDraggable: 0
   IsDragging: 0
 --- !u!1 &780281837
 GameObject:
@@ -2903,7 +2903,7 @@ MonoBehaviour:
   - {fileID: 1014406871}
   - {fileID: 113695690}
   _roads: []
-  BaseID: 0
+  BaseID: 5
 --- !u!58 &926518826
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2941,7 +2941,7 @@ MonoBehaviour:
   OnDragEnd:
     m_PersistentCalls:
       m_Calls: []
-  IsDraggable: 1
+  IsDraggable: 0
   IsDragging: 0
 --- !u!1 &928511401
 GameObject:
@@ -3062,7 +3062,7 @@ MonoBehaviour:
   - {fileID: 553799778}
   - {fileID: 113695690}
   _roads: []
-  BaseID: 0
+  BaseID: 3
 --- !u!58 &928511406
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3100,7 +3100,7 @@ MonoBehaviour:
   OnDragEnd:
     m_PersistentCalls:
       m_Calls: []
-  IsDraggable: 1
+  IsDraggable: 0
   IsDragging: 0
 --- !u!1 &1014406867
 GameObject:
@@ -3221,7 +3221,7 @@ MonoBehaviour:
   - {fileID: 926518825}
   - {fileID: 771258723}
   _roads: []
-  BaseID: 0
+  BaseID: 2
 --- !u!58 &1014406872
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3259,7 +3259,7 @@ MonoBehaviour:
   OnDragEnd:
     m_PersistentCalls:
       m_Calls: []
-  IsDraggable: 1
+  IsDraggable: 0
   IsDragging: 0
 --- !u!1 &1041319191
 GameObject:
